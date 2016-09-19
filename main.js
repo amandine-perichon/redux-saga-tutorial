@@ -21,11 +21,15 @@ const action = type => store.dispatch({type})
 
 function render() {
   ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => action('INCREMENT')}
-      onDecrement={() => action('DECREMENT')}
-      onIncrementAsync={() => action('INCREMENT_ASYNC')} />,
+    <div>
+      <Counter
+        value={store.getState().counter}
+        onIncrement={() => action('INCREMENT')}
+        onDecrement={() => action('DECREMENT')}
+        onIncrementAsync={() => action('INCREMENT_ASYNC')} />
+      <button onClick={() => action('FETCH_QUOTE')}>Quote?</button>
+      <p>{store.getState().quote}</p>
+    </div>,
     document.getElementById('root')
   )
 }
